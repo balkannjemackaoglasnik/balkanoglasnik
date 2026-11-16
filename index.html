@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BalkanOglasnik DE – Mali oglasi i ABO za balkansku zajednicu u Njemačkoj</title>
+  <meta name="description" content="Kupuj i prodaj lokalno u Njemačkoj kao na oglasniku: vozila, stanovi, namještaj, tehnika, prevoz i domaći proizvodi za balkansku zajednicu.">
+  <style>
+    :root {
+      --primary: #047857;
+      --primary-dark: #064e3b;
+      --primary-soft: #ecfdf5;
+      --accent: #d97706;
+      --accent-bright: #f59e0b;
+      --accent-soft: #fffbeb;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --danger: #b91c1c;
+      --success: #047857;
+      --abo-bg: #fef3c7;
+      --abo-text: #78350f;
+      --radius: 14px;
+      --shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+      --shadow-hover: 0 14px 28px rgba(15, 23, 42, 0.09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    /* Navigacija */
+    nav {
+      background-color: #0f172a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.14);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 1.48rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span { color: var(--accent-bright); }
+
+    .brand small {
+      font-size: 0.7rem;
+      font-weight: 800;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 2px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      border-radius: 9px;
+      border: none;
+      padding: 9px 16px;
+      font-size: 0.93rem;
+      transition: all 0.16s ease;
+    }
+
+    button:hover { opacity: 0.95; transform: translateY(-1px); }
+    button:active { transform: translateY(0) scale(0.99); }
+    button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .btn-primary { background-color: var(--primary); color: #ffffff; }
+    .btn-primary:hover { background-color: var(--primary-dark); }
+    .btn-accent { background-color: var(--accent-bright); color: #0f172a; font-weight: 700; }
+    .btn-accent:hover { background-color: var(--accent); color: #ffffff; }
+    .btn-outline { background-color: transparent; border: 1px solid rgba(255,255,255,0.25); color: #ffffff; }
+    .btn-outline:hover { background-color: rgba(255,255,255,0.08); }
+    .btn-danger { background-color: var(--danger); color: #ffffff; padding: 7px 13px; font-size: 0.85rem; }
+    .btn-reset { background-color: #f8fafc; color: var(--text); border: 1px solid var(--border); width: 100%; height: 42px; }
+    .btn-reset:hover { background-color: #e2e8f0; }
+
+    /* Hero zaglavlje */
+    .hero-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #064e3b 62%, #047857 100%);
+      color: #ffffff;
+      padding: 42px 20px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-banner h1 {
+      margin: 0 0 10px;
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-banner p {
+      margin: 0 auto 16px;
+      max-width: 740px;
+      color: #e2e8f0;
+      font-size: 0.98rem;
+    }
+
+    .quick-cities {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .city-pill {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #f8fafc;
+      padding: 6px 13px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .city-pill:hover {
+      background: var(--accent-bright);
+      color: #0f172a;
+      border-color: var(--accent-bright);
+    }
+
+    /* Glavni dio */
+    main {
+      max-width: 1200px;
+      margin: 24px auto 64px;
+      padding: 0 20px;
+    }
+
+    .hidden { display: none !important; }
+
+    /* Filteri */
+    .filter-box {
+      background: var(--card);
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+      border: 1px solid var(--border);
+    }
+
+    .filter-title {
+      margin: 0 0 16px;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 12px;
+      align-items: end;
+    }
+
+    .filter-item label {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      font-size: 0.94rem;
+      font-family: inherit;
+      background-color: #ffffff;
+      color: var(--text);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.14);
+    }
+
+    .field-hint {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Prazno stanje */
+    .empty-state {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 48px 24px;
+      text-align: center;
+      border: 2px dashed #cbd5e1;
+      margin-top: 10px;
+    }
+
+    .empty-state h3 { margin: 0 0 8px; font-size: 1.35rem; }
+    .empty-state p { color: var(--muted); margin: 0 0 20px; }
+
+    /* Mreža oglasa */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+    }
+
+    .product-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: #cbd5e1;
+    }
+
+    .product-card.is-abo {
+      border-color: var(--accent-bright);
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.1);
+    }
+
+    /* Galerija slika */
+    .slider-wrap {
+      position: relative;
+      width: 100%;
+      height: 215px;
+      background-color: #e2e8f0;
+      overflow: hidden;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15, 23, 42, 0.72);
+      color: #ffffff;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      padding: 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
+
+    .img-counter {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(15, 23, 42, 0.78);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .thumb-strip {
+      display: flex;
+      gap: 6px;
+      padding: 8px 14px 0;
+      overflow-x: auto;
+    }
+
+    .thumb-img {
+      width: 46px;
+      height: 36px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0.55;
+      border: 2px solid transparent;
+    }
+
+    .thumb-img.active {
+      opacity: 1;
+      border-color: var(--primary);
+    }
+
+    .product-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-size: 0.73rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-abo {
+      background: var(--abo-bg);
+      color: var(--abo-text);
+      border-color: #fcd34d;
+    }
+
+    .badge-cond {
+      background: #f1f5f9;
+      color: #334155;
+      border-color: #e2e8f0;
+    }
+
+    .badge-brand {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-color: #bfdbfe;
+    }
+
+    .product-title {
+      margin: 0 0 6px;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .product-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0 0 12px;
+      flex: 1;
+    }
+
+    .payment-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .pay-tag {
+      font-size: 0.74rem;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      color: #334155;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .product-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+
+    /* Forme, ABO i račun */
+    .box {
+      background: var(--card);
+      max-width: 640px;
+      margin: 28px auto;
+      padding: 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .box h2 { margin-top: 0; letter-spacing: -0.015em; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 0.92rem;
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .abo-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .abo-card.featured {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border-color: #f59e0b;
+    }
+
+    .abo-card h3 { margin: 0 0 4px; color: var(--text); }
+    .abo-card p { margin: 0; font-size: 0.88rem; color: var(--muted); max-width: 500px; }
+
+    .disclaimer-box {
+      background: var(--accent-soft);
+      border: 1px solid #fcd34d;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      font-size: 0.86rem;
+      color: #334155;
+    }
+
+    .agree-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .agree-label input {
+      width: auto;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .checkbox-label input { width: auto; }
+
+    .upload-preview {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .upload-preview img {
+      width: 70px;
+      height: 55px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    .dashboard-header {
+      background: var(--card);
+      padding: 24px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .alert {
+      background: var(--primary-soft);
+      border: 1px solid #a7f3d0;
+      color: var(--primary-dark);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 200;
+    }
+
+    .modal {
+      background: #ffffff;
+      max-width: 540px;
+      width: 100%;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.28);
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .modal-main-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .contact-box {
+      background: #f8fafc;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 14px 0;
+      font-size: 0.92rem;
+      border: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      padding: 11px 14px;
+      border-radius: 9px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: #ffffff;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .checkbox-grid, .contact-grid, .form-row-2 { grid-template-columns: 1fr; }
+      .filter-item-wide { grid-column: span 1 !important; }
+      .hero-banner h1 { font-size: 1.68rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigacija -->
+  <nav>
+    <div class="nav-container">
+      <a class="brand" onclick="zeigeAnsicht('shop')">Balkan<span>Oglasnik</span><small>ABO &amp; DE</small></a>
+      <div class="nav-links" id="nav-gast">
+        <button class="btn-outline" onclick="zeigeAnsicht('shop')">Svi oglasi</button>
+        <button class="btn-outline" onclick="zeigeAnsicht('abo')">ABO paketi</button>
+        <button class="btn-accent" onclick="zeigeAnsicht('auth')">Prijava / Registracija</button>
+      </div>
+      <div class="nav-links hidden" id="nav-user">
+        <button class="btn-outline" onclick="zeigeAnsicht('shop')">Oglasnik</button>
+        <button class="btn-outline" onclick="zeigeAnsicht('abo')">ABO (<span id="nav-abo-status">Osnovni</span>)</button>
+        <button class="btn-accent" onclick="zeigeAnsicht('sell')">+ Objavi oglas</button>
+        <button class="btn-primary" onclick="zeigeAnsicht('account')">Moj račun (<span id="nav-username"></span>)</button>
+        <button class="btn-outline" onclick="ausloggen()">Odjava</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero zaglavlje -->
+  <div class="hero-banner" id="hero-banner">
+    <h1>Balkan Oglasnik Njemačka</h1>
+    <p>Kupuj i prodaj lokalno u Njemačkoj kao na oglasniku – za našu zajednicu širom Njemačke. Kreni besplatno ili izaberi <strong>ABO</strong> za redovne oglase.</p>
+    <div class="quick-cities">
+      <button type="button" class="city-pill" onclick="schnellStadt('')">Svi gradovi</button>
+      <button type="button" class="city-pill" onclick="schnellStadt('München')">München</button>
+      <button type="button" class="city-pill" onclick="schnellStadt('Germering')">Germering</button>
+      <button type="button" class="city-pill" onclick="schnellStadt('Stuttgart')">Stuttgart</button>
+      <button type="button" class="city-pill" onclick="schnellStadt('Frankfurt')">Frankfurt</button>
+      <button type="button" class="city-pill" onclick="schnellStadt('Berlin')">Berlin</button>
+      <button type="button" class="city-pill" onclick="schnellStadt('Hamburg')">Hamburg</button>
+    </div>
+  </div>
+
+  <main>
+    <div id="status-msg" class="alert hidden"></div>
+
+    <!-- 1. OGLASI I FILTERI -->
+    <section id="view-shop">
+      <div class="filter-box">
+        <div class="filter-title">
+          <span>Pretraga i filteri (širom Njemačke)</span>
+          <span id="results-count" style="font-size:0.85rem; color:var(--muted); font-weight:600;"></span>
+        </div>
+
+        <div class="filter-grid">
+          <div class="filter-item filter-item-wide" style="grid-column: span 2;">
+            <label for="search-input">Ključna riječ (naziv ili opis)</label>
+            <input type="text" id="search-input" placeholder="npr. Golf, stan, prevoz, ćevapi, kauč..." oninput="renderProdukte()">
+          </div>
+
+          <div class="filter-item">
+            <label for="category-filter">Kategorija</label>
+            <select id="category-filter" onchange="renderProdukte()">
+              <option value="Sve">Sve kategorije</option>
+              <option value="Vozila i dijelovi">Vozila i dijelovi</option>
+              <option value="Stanovi i nekretnine">Stanovi i nekretnine</option>
+              <option value="Mobiteli, TV i elektronika">Mobiteli, TV i elektronika</option>
+              <option value="Namještaj i domaćinstvo">Namještaj i domaćinstvo</option>
+              <option value="Alati i bašta">Alati i bašta</option>
+              <option value="Odjeća, djeca i sport">Odjeća, djeca i sport</option>
+              <option value="Balkanski specijaliteti i hrana">Balkanski specijaliteti i hrana</option>
+              <option value="Prevoz, selidbe i putovanja (BiH/HR/SRB/CG)">Prevoz, selidbe i putovanja (BiH/HR/SRB/CG)</option>
+              <option value="Majstori, poslovi i usluge">Majstori, poslovi i usluge</option>
+              <option value="Poklanjam / Zamjena">Poklanjam / Zamjena</option>
+              <option value="Ostalo">Ostalo</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="condition-filter">Stanje</label>
+            <select id="condition-filter" onchange="renderProdukte()">
+              <option value="Sve">Sve (Novo i polovno)</option>
+              <option value="Novo">Novo</option>
+              <option value="Polovno">Polovno</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="brand-filter">Marka / Model / Vrsta</label>
+            <input type="text" id="brand-filter" placeholder="npr. VW, Apple, 2 sobe, kombi..." oninput="renderProdukte()">
+          </div>
+
+          <div class="filter-item">
+            <label for="city-filter">Grad / Poštanski broj (PLZ)</label>
+            <input type="text" id="city-filter" placeholder="npr. 82110, München, Stuttgart..." oninput="renderProdukte()">
+          </div>
+
+          <div class="filter-item">
+            <label for="min-price-filter">Cijena od (€)</label>
+            <input type="number" id="min-price-filter" min="0" placeholder="0" oninput="renderProdukte()">
+          </div>
+
+          <div class="filter-item">
+            <label for="max-price-filter">Cijena do (€)</label>
+            <input type="number" id="max-price-filter" min="0" placeholder="Maks" oninput="renderProdukte()">
+          </div>
+
+          <div class="filter-item">
+            <button type="button" class="btn-reset" onclick="resetFiltere()">Poništi filtere</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="product-list" class="product-grid"></div>
+    </section>
+
+    <!-- 2. ABO PAKETI -->
+    <section id="view-abo" class="hidden">
+      <div class="box" style="max-width:780px;">
+        <h2>BalkanOglasnik ABO paketi</h2>
+        <p style="color:var(--muted); margin-top:0;">Za privatne korisnike, majstore, prevoznike i obrtnike u Njemačkoj.</p>
+
+        <div class="abo-card">
+          <div>
+            <h3>Osnovni (Besplatno)</h3>
+            <p>Odlično za početak: objavljivanje oglasa, pretraga po gradovima i poštanskim brojevima te direktan dogovor s kupcima i prodavačima.</p>
+          </div>
+          <button type="button" class="btn-outline" style="color:var(--text); border-color:#cbd5e1; background:#ffffff;" onclick="waehleAbo('Osnovni')">0 € / mjesečno</button>
+        </div>
+
+        <div class="abo-card featured">
+          <div>
+            <h3>Balkan ABO Partner (Mjesečno)</h3>
+            <p>Sa <strong>ABO Partner</strong> oznakom, istaknutom karticom oglasa i jednostavnim upravljanjem za redovne ponude i usluge.</p>
+          </div>
+          <button type="button" id="abo-partner-btn" class="btn-accent" onclick="waehleAbo('Balkan ABO Partner')">9,99 € / mjesečno – Aktiviraj</button>
+        </div>
+
+        <button type="button" class="btn-primary" onclick="zeigeAnsicht('shop')">Nazad na oglase</button>
+      </div>
+    </section>
+
+    <!-- 3. PRIJAVA I REGISTRACIJA -->
+    <section id="view-auth" class="hidden">
+      <div class="box">
+        <div class="tabs">
+          <button class="btn-primary" id="tab-login-btn" onclick="wechselAuthTab('login')">Prijava</button>
+          <button class="btn-outline" style="color:var(--text); border-color:var(--border);" id="tab-reg-btn" onclick="wechselAuthTab('register')">Napravi račun</button>
+        </div>
+
+        <form id="form-login" onsubmit="einloggen(event)">
+          <h2>Prijava</h2>
+          <div class="form-group">
+            <label for="login-email">E-mail adresa</label>
+            <input type="email" id="login-email" required placeholder="npr. ime@primjer.de">
+          </div>
+          <div class="form-group">
+            <label for="login-pass">Lozinka</label>
+            <input type="password" id="login-pass" required placeholder="Unesi lozinku">
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;">Prijavi se</button>
+        </form>
+
+        <form id="form-register" class="hidden" onsubmit="registrieren(event)">
+          <h2>Besplatna registracija računa</h2>
+          <div class="form-group">
+            <label for="reg-name">Ime ili naziv firme / obrta</label>
+            <input type="text" id="reg-name" required placeholder="npr. Emir S. ili Balkan Prevoz DE">
+          </div>
+          <div class="form-group">
+            <label for="reg-city">Grad / Poštanski broj (PLZ) u Njemačkoj</label>
+            <input type="text" id="reg-city" required placeholder="npr. 82110 Germering ili München">
+          </div>
+          <div class="form-group">
+            <label for="reg-email">E-mail adresa</label>
+            <input type="email" id="reg-email" required placeholder="npr. emir@primjer.de">
+          </div>
+          <div class="form-group">
+            <label for="reg-phone">Telefon / WhatsApp / Viber (opcionalno)</label>
+            <input type="text" id="reg-phone" placeholder="npr. +49 ... (samo ako želiš prikazati)">
+            <span class="field-hint">Opcionalno: unesi samo ako želiš da te ljudi kontaktiraju telefonom, WhatsAppom ili Viberom.</span>
+          </div>
+          <div class="form-group">
+            <label for="reg-pass">Lozinka (najmanje 8 znakova)</label>
+            <input type="password" id="reg-pass" required minlength="8" placeholder="Najmanje 8 znakova">
+          </div>
+
+          <div class="disclaimer-box">
+            <strong>Napomena o dogovoru i odgovornosti:</strong> Kupci i prodavači sve detalje oko preuzimanja, slanja i plaćanja dogovaraju direktno međusobno. Ova stranica služi samo za objavu oglasa i ne snosi odgovornost za sadržaj oglasa, robu ili dogovore između korisnika.
+            <label class="agree-label">
+              <input type="checkbox" id="reg-agree" required>
+              <span>Prihvatam da se dogovori vrše direktno između korisnika i da stranica ne snosi odgovornost.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-accent" style="width:100%;">Registruj se besplatno</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 4. OBJAVA OGLASA -->
+    <section id="view-sell" class="hidden">
+      <div class="box">
+        <h2>Objavi novi oglas</h2>
+        <form onsubmit="produktHochladen(event)">
+          <div class="form-group">
+            <label for="prod-title">Naslov oglasa</label>
+            <input type="text" id="prod-title" required placeholder="npr. VW Golf 7 TDI, dvosoban stan, kombi prevoz za BiH/HR">
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="prod-cat">Kategorija</label>
+              <select id="prod-cat">
+                <option value="Vozila i dijelovi">Vozila i dijelovi</option>
+                <option value="Stanovi i nekretnine">Stanovi i nekretnine</option>
+                <option value="Mobiteli, TV i elektronika">Mobiteli, TV i elektronika</option>
+                <option value="Namještaj i domaćinstvo">Namještaj i domaćinstvo</option>
+                <option value="Alati i bašta">Alati i bašta</option>
+                <option value="Odjeća, djeca i sport">Odjeća, djeca i sport</option>
+                <option value="Balkanski specijaliteti i hrana">Balkanski specijaliteti i hrana</option>
+                <option value="Prevoz, selidbe i putovanja (BiH/HR/SRB/CG)">Prevoz, selidbe i putovanja (BiH/HR/SRB/CG)</option>
+                <option value="Majstori, poslovi i usluge">Majstori, poslovi i usluge</option>
+                <option value="Poklanjam / Zamjena">Poklanjam / Zamjena</option>
+                <option value="Ostalo">Ostalo</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="prod-cond">Stanje</label>
+              <select id="prod-cond">
+                <option value="Polovno">Polovno</option>
+                <option value="Novo">Novo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="prod-brand">Marka / Model / Dodatak (opcionalno)</label>
+              <input type="text" id="prod-brand" placeholder="npr. VW, Apple, 2 sobe, kombi">
+            </div>
+
+            <div class="form-group">
+              <label for="prod-city">Grad / Poštanski broj (PLZ)</label>
+              <input type="text" id="prod-city" required placeholder="npr. München, 82110 Germering...">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-price">Cijena (€)</label>
+            <input type="number" id="prod-price" step="any" min="0" required placeholder="npr. 120 (0 = Dogovor / Poklanjam)">
+          </div>
+
+          <div class="form-group">
+            <label>Način preuzimanja i plaćanja:</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="paymethod" value="Gotovina pri preuzimanju" checked> Gotovina pri preuzimanju</label>
+              <label class="checkbox-label"><input type="checkbox" name="paymethod" value="Slanje poštom / paketom"> Slanje paketom</label>
+              <label class="checkbox-label"><input type="checkbox" name="paymethod" value="Bankovna uplata"> Bankovna uplata</label>
+              <label class="checkbox-label"><input type="checkbox" name="paymethod" value="PayPal"> PayPal</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-img">Slike oglasa (automatski se prilagođavaju)</label>
+            <input type="file" id="prod-img" accept="image/*" multiple onchange="vorschauBilder(event)">
+            <span class="field-hint">Ako ne dodaš sliku, automatski se postavlja pregledna naslovna slika.</span>
+            <div id="upload-preview" class="upload-preview"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="prod-desc">Opis oglasa</label>
+            <textarea id="prod-desc" rows="3" required placeholder="Navedi stanje, dimenzije, mjesto preuzimanja, termin ili druge važne detalje..."></textarea>
+          </div>
+
+          <button type="submit" id="submit-prod-btn" class="btn-accent" style="width:100%;">Objavi oglas</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 5. MOJ RAČUN -->
+    <section id="view-account" class="hidden">
+      <div class="dashboard-header">
+        <div>
+          <h2 style="margin:0 0 4px;">Zdravo, <span id="acc-name"></span>!</h2>
+          <p style="margin:0; color:var(--muted);">
+            Grad: <span id="acc-city"></span> · ABO: <strong id="acc-abo"></strong> · E-mail: <span id="acc-email"></span> · Telefon: <span id="acc-phone"></span>
+          </p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn-outline" style="color:var(--text); border-color:var(--border);" onclick="zeigeAnsicht('abo')">Upravljaj ABO</button>
+          <button class="btn-accent" onclick="zeigeAnsicht('sell')">+ Novi oglas</button>
+        </div>
+      </div>
+
+      <h3>Moji aktivni oglasi</h3>
+      <div id="my-product-list" class="product-grid"></div>
+    </section>
+  </main>
+
+  <!-- Kontakt prozor -->
+  <div id="buy-modal" class="modal-backdrop hidden" onclick="schliesseModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <img id="modal-img" src="" alt="Slika oglasa" class="modal-main-img">
+      <div id="modal-thumbs" class="thumb-strip" style="padding:0 0 12px 0;"></div>
+      <div id="modal-badges" class="badge-row" style="margin-bottom:6px;"></div>
+      <h3 id="modal-title" style="margin:0 0 4px;">Naslov</h3>
+      <p id="modal-price" class="price" style="margin:0 0 10px;"></p>
+      <p id="modal-desc" style="color:var(--muted); margin:0 0 12px;"></p>
+
+      <div>
+        <strong style="font-size:0.88rem;">Preuzimanje i plaćanje:</strong>
+        <div id="modal-payments" class="payment-tags" style="margin-top:6px;"></div>
+      </div>
+
+      <div class="contact-box">
+        <strong>Direktan kontakt sa oglašivačem:</strong><br>
+        <span>Naziv: <strong id="modal-seller"></strong> (<span id="modal-city"></span>)</span><br>
+        <span>Telefon / WhatsApp / Viber: <strong id="modal-phone"></strong></span><br>
+        <span>E-mail: <strong id="modal-email"></strong></span>
+
+        <div class="form-group" style="margin-top:12px; margin-bottom:8px;">
+          <label for="buyer-msg" style="font-size:0.85rem;">Poruka za oglašivača:</label>
+          <textarea id="buyer-msg" rows="2" oninput="aktualisiereModalLinks()"></textarea>
+        </div>
+
+        <div class="contact-grid">
+          <a id="modal-wa-btn" href="#" target="_blank" class="contact-link" style="background:#16a34a;">WhatsApp</a>
+          <a id="modal-viber-btn" href="#" target="_blank" class="contact-link" style="background:#6d28d9;">Viber</a>
+          <a id="modal-call-btn" href="#" class="contact-link" style="background:var(--primary);">Pozovi</a>
+          <a id="modal-mail-btn" href="#" class="contact-link" style="background:#0f172a;">E-mail</a>
+        </div>
+      </div>
+
+      <button class="btn-outline" style="width:100%; color:var(--text); border-color:var(--border);" onclick="document.getElementById('buy-modal').classList.add('hidden')">Zatvori</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+    const SUPABASE_URL = "https://hnyazendoouacysuetqn.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhueWF6ZW5kb291YWN5c3VldHFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ3NzA3NjksImV4cCI6MjExMDM0Njc2OX0.YwMau6ppbi_H7pS3UrSlmo0NBPNbeaohPJRbr_ixUtc";
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const PRODUCTS_TABLE = "balkan_products";
+    const USERS_TABLE = "balkan_users";
+
+    function svgBild(label, bg1, bg2) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="${bg1}"/><stop offset="100%" stop-color="${bg2}"/>
+        </linearGradient></defs>
+        <rect width="800" height="500" fill="url(#g)"/>
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="34" font-weight="bold">${label}</text>
+      </svg>`;
+      return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+    }
+
+    const STARTER_PRODUKTE = [
+      {
+        id: 9001,
+        title: "VW Golf 7 Variant 2.0 TDI DSG – nov tehnički pregled",
+        category: "Vozila i dijelovi",
+        condition: "Polovno",
+        brand: "VW Golf 7",
+        price: 11850,
+        desc: "Uredno održavan, automatska klima, tempomat, parking senzori naprijed i nazad. Pregled po dogovoru u Münchenu.",
+        payments: ["Gotovina pri preuzimanju", "Bankovna uplata"],
+        images: [svgBild("VW Golf 7 TDI · München", "#064e3b", "#0f172a")],
+        sellerName: "Oglašivač (ABO)",
+        sellerCity: "80331 München",
+        sellerEmail: "kontakt@balkanoglasnik.de",
+        sellerPhone: "",
+        isAbo: true
+      },
+      {
+        id: 9002,
+        title: "Dvosoban stan sa balkonom – mirna lokacija",
+        category: "Stanovi i nekretnine",
+        condition: "Polovno",
+        brand: "2 sobe · 58 m²",
+        price: 890,
+        desc: "Svijetao stan sa ugradbenom kuhinjom, podrumom i parking mjestom. Pogodan za parove ili radnike na području Stuttgarta.",
+        payments: ["Gotovina pri preuzimanju", "Bankovna uplata"],
+        images: [svgBild("Dvosoban stan · Stuttgart", "#1e3a8a", "#0f172a")],
+        sellerName: "Oglašivač",
+        sellerCity: "70173 Stuttgart",
+        sellerEmail: "kontakt@balkanoglasnik.de",
+        sellerPhone: "",
+        isAbo: false
+      },
+      {
+        id: 9003,
+        title: "Sedmični kombi prevoz i selidbe Njemačka ↔ BiH / HR",
+        category: "Prevoz, selidbe i putovanja (BiH/HR/SRB/CG)",
+        condition: "Novo",
+        brand: "Kombi / Prevoz",
+        price: 0,
+        desc: "Redovne vožnje iz okoline Münchena i Germeringa prema Hrvatskoj i Bosni i Hercegovini. Paketi, namještaj i manji tereti.",
+        payments: ["Gotovina pri preuzimanju", "PayPal", "Bankovna uplata"],
+        images: [svgBild("Prevoz DE - BiH / HR", "#92400e", "#0f172a")],
+        sellerName: "Prevoznik (ABO)",
+        sellerCity: "82110 Germering",
+        sellerEmail: "kontakt@balkanoglasnik.de",
+        sellerPhone: "",
+        isAbo: true
+      },
+      {
+        id: 9004,
+        title: "Domaći ajvar, suhomesnato i med – po narudžbi",
+        category: "Balkanski specijaliteti i hrana",
+        condition: "Novo",
+        brand: "Domaće",
+        price: 12,
+        desc: "Domaći proizvodi po narudžbi: ajvar u teglama, suho meso i domaći med. Lično preuzimanje ili slanje paketom u Njemačkoj.",
+        payments: ["Gotovina pri preuzimanju", "Slanje paketom", "PayPal"],
+        images: [svgBild("Balkanski specijaliteti · DE", "#7f1d1d", "#0f172a")],
+        sellerName: "Oglašivač (ABO)",
+        sellerCity: "60311 Frankfurt",
+        sellerEmail: "kontakt@balkanoglasnik.de",
+        sellerPhone: "",
+        isAbo: true
+      },
+      {
+        id: 9005,
+        title: "Moderan ugaoni kauč na razvlačenje – odlično stanje",
+        category: "Namještaj i domaćinstvo",
+        condition: "Polovno",
+        brand: "Ugaoni kauč",
+        price: 240,
+        desc: "Očuvan kauč sa prostorom za odlaganje, bez kućnih ljubimaca i duhanskog dima. Samo lično preuzimanje u Berlinu.",
+        payments: ["Gotovina pri preuzimanju"],
+        images: [svgBild("Ugaoni kauč · Berlin", "#334155", "#064e3b")],
+        sellerName: "Oglašivač",
+        sellerCity: "10115 Berlin",
+        sellerEmail: "kontakt@balkanoglasnik.de",
+        sellerPhone: "",
+        isAbo: false
+      },
+      {
+        id: 9006,
+        title: "iPhone 15 Pro 128 GB – očuvan, uključena maska",
+        category: "Mobiteli, TV i elektronika",
+        condition: "Polovno",
+        brand: "Apple iPhone 15 Pro",
+        price: 680,
+        desc: "Ekran bez ogrebotina, dobra baterija, potpuno ispravan uređaj. Lično preuzimanje ili slanje paketom.",
+        payments: ["Gotovina pri preuzimanju", "Slanje paketom", "Bankovna uplata"],
+        images: [svgBild("iPhone 15 Pro · Hamburg", "#0f172a", "#0369a1")],
+        sellerName: "Oglašivač",
+        sellerCity: "20095 Hamburg",
+        sellerEmail: "kontakt@balkanoglasnik.de",
+        sellerPhone: "",
+        isAbo: false
+      }
+    ];
+
+    let products = [...STARTER_PRODUKTE];
+    let currentUser = JSON.parse(localStorage.getItem("bo_de_currentUser")) || null;
+    let bildIndexMap = {};
+    let aktivesModalProdukt = null;
+    let komprimiraneSlike = [];
+
+    function saveSessionUser() {
+      if (currentUser) {
+        localStorage.setItem("bo_de_currentUser", JSON.stringify(currentUser));
+      } else {
+        localStorage.removeItem("bo_de_currentUser");
+      }
+    }
+
+    function zeigeNachricht(text) {
+      const box = document.getElementById("status-msg");
+      box.textContent = text;
+      box.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => box.classList.add("hidden"), 4000);
+    }
+
+    function komprimirajSliku(file, maxWidth = 1000, quality = 0.72) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = new Image();
+          img.onload = () => {
+            let width = img.width;
+            let height = img.height;
+
+            if (width > maxWidth) {
+              height = Math.round((height * maxWidth) / width);
+              width = maxWidth;
+            }
+
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, width, height);
+
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          };
+          img.onerror = () => resolve(event.target.result);
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function loadProductsFromDb() {
+      try {
+        const { data, error } = await supabase
+          .from(PRODUCTS_TABLE)
+          .select("*")
+          .order("id", { ascending: false });
+
+        if (error) {
+          console.warn("Supabase napomena:", error.message);
+          products = [...STARTER_PRODUKTE];
+          return;
+        }
+
+        const dbItems = (data || []).map(row => ({
+          id: Number(row.id),
+          title: row.title || "",
+          category: row.category || "Ostalo",
+          condition: row.condition || "Polovno",
+          brand: row.brand || "",
+          price: Number(row.price) || 0,
+          desc: row.description || "",
+          payments: Array.isArray(row.payments) ? row.payments : ["Gotovina pri preuzimanju"],
+          images: Array.isArray(row.images) && row.images.length
+            ? row.images
+            : [svgBild(row.title || "BalkanOglasnik DE", "#064e3b", "#0f172a")],
+          sellerName: row.seller_name || "",
+          sellerCity: row.seller_city || "",
+          sellerEmail: row.seller_email || "",
+          sellerPhone: row.seller_phone || "",
+          isAbo: Boolean(row.is_abo)
+        }));
+
+        products = dbItems.length > 0 ? [...dbItems, ...STARTER_PRODUKTE] : [...STARTER_PRODUKTE];
+      } catch (err) {
+        console.warn(err);
+        products = [...STARTER_PRODUKTE];
+      }
+    }
+
+    async function zeigeAnsicht(ansicht) {
+      ["shop", "abo", "auth", "sell", "account"].forEach(v => {
+        document.getElementById("view-" + v).classList.add("hidden");
+      });
+
+      if ((ansicht === "sell" || ansicht === "account") && !currentUser) {
+        zeigeNachricht("Prvo se prijavi ili napravi račun.");
+        ansicht = "auth";
+      }
+
+      document.getElementById("view-" + ansicht).classList.remove("hidden");
+      document.getElementById("hero-banner").classList.toggle("hidden", ansicht !== "shop");
+
+      if (ansicht === "sell" && currentUser) {
+        const cityInput = document.getElementById("prod-city");
+        if (cityInput && !cityInput.value) {
+          cityInput.value = currentUser.city || "";
+        }
+      }
+
+      if (ansicht === "shop") {
+        await loadProductsFromDb();
+        renderProdukte();
+      }
+      if (ansicht === "account") {
+        await loadProductsFromDb();
+        renderKonto();
+      }
+    }
+
+    function wechselAuthTab(tab) {
+      const isLogin = tab === "login";
+      document.getElementById("form-login").classList.toggle("hidden", !isLogin);
+      document.getElementById("form-register").classList.toggle("hidden", isLogin);
+      document.getElementById("tab-login-btn").className = isLogin ? "btn-primary" : "btn-outline";
+      document.getElementById("tab-reg-btn").className = !isLogin ? "btn-primary" : "btn-outline";
+      document.getElementById("tab-login-btn").style.color = isLogin ? "#fff" : "var(--text)";
+      document.getElementById("tab-reg-btn").style.color = !isLogin ? "#fff" : "var(--text)";
+    }
+
+    function waehleAbo(paketName) {
+      const istPartner = paketName.includes("Partner");
+      if (!currentUser) {
+        localStorage.setItem("bo_de_pendingAbo", istPartner ? "Balkan ABO Partner" : "Osnovni");
+        zeigeNachricht(`Odabran paket "${paketName}". Prijavi se ili napravi račun.`);
+        zeigeAnsicht("auth");
+        return;
+      }
+      currentUser.abo = istPartner ? "Balkan ABO Partner" : "Osnovni";
+      saveSessionUser();
+      aktualisiereNav();
+      zeigeNachricht(`ABO paket ažuriran: ${currentUser.abo}`);
+      zeigeAnsicht("account");
+    }
+
+    async function registrieren(e) {
+      e.preventDefault();
+      const name = document.getElementById("reg-name").value.trim();
+      const city = document.getElementById("reg-city").value.trim();
+      const email = document.getElementById("reg-email").value.trim().toLowerCase();
+      const phone = document.getElementById("reg-phone").value.trim();
+      const pass = document.getElementById("reg-pass").value;
+      const agreed = document.getElementById("reg-agree").checked;
+
+      if (!agreed) {
+        alert("Potvrdi napomenu o direktnom dogovoru i odgovornosti.");
+        return;
+      }
+
+      const pendingAbo = localStorage.getItem("bo_de_pendingAbo") || "Osnovni";
+      localStorage.removeItem("bo_de_pendingAbo");
+
+      const fallbackUser = { name, city, email, phone, abo: pendingAbo };
+
+      try {
+        const { data: existing } = await supabase
+          .from(USERS_TABLE)
+          .select("id")
+          .eq("email", email)
+          .maybeSingle();
+
+        if (existing) {
+          alert("Ova e-mail adresa je već registrovana. Idi na Prijava.");
+          return;
+        }
+
+        const { data: inserted, error: insertErr } = await supabase
+          .from(USERS_TABLE)
+          .insert([{ name, city, email, phone, password: pass, agreed: true, abo: pendingAbo }])
+          .select()
+          .single();
+
+        if (!insertErr && inserted) {
+          currentUser = {
+            name: inserted.name,
+            city: inserted.city,
+            email: inserted.email,
+            phone: inserted.phone,
+            abo: inserted.abo || pendingAbo
+          };
+        } else {
+          currentUser = fallbackUser;
+        }
+      } catch {
+        currentUser = fallbackUser;
+      }
+
+      saveSessionUser();
+      aktualisiereNav();
+      zeigeNachricht("Račun je uspješno kreiran!");
+      await zeigeAnsicht("account");
+    }
+
+    async function einloggen(e) {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value.trim().toLowerCase();
+      const pass = document.getElementById("login-pass").value;
+
+      const { data: user, error } = await supabase
+        .from(USERS_TABLE)
+        .select("name, city, email, phone, password, abo")
+        .eq("email", email)
+        .eq("password", pass)
+        .maybeSingle();
+
+      if (error || !user) {
+        alert("E-mail ili lozinka nije ispravna.");
+        return;
+      }
+
+      currentUser = {
+        name: user.name,
+        city: user.city,
+        email: user.email,
+        phone: user.phone,
+        abo: user.abo || "Osnovni"
+      };
+      saveSessionUser();
+      aktualisiereNav();
+      zeigeNachricht("Dobrodošao nazad!");
+      await zeigeAnsicht("shop");
+    }
+
+    function ausloggen() {
+      currentUser = null;
+      saveSessionUser();
+      aktualisiereNav();
+      zeigeNachricht("Odjavljen si.");
+      zeigeAnsicht("shop");
+    }
+
+    function aktualisiereNav() {
+      const istEingeloggt = Boolean(currentUser);
+      document.getElementById("nav-gast").classList.toggle("hidden", istEingeloggt);
+      document.getElementById("nav-user").classList.toggle("hidden", !istEingeloggt);
+      if (istEingeloggt) {
+        document.getElementById("nav-username").textContent = currentUser.name;
+        document.getElementById("nav-abo-status").textContent = currentUser.abo || "Osnovni";
+      }
+    }
+
+    async function vorschauBilder(event) {
+      const files = Array.from(event.target.files);
+      const preview = document.getElementById("upload-preview");
+      const btn = document.getElementById("submit-prod-btn");
+      preview.innerHTML = "<span style='font-size:0.85rem; color:var(--muted);'>Priprema slika...</span>";
+      if (btn) btn.disabled = true;
+
+      komprimiraneSlike = await Promise.all(files.map(file => komprimirajSliku(file)));
+
+      preview.innerHTML = "";
+      komprimiraneSlike.forEach(dataUrl => {
+        const img = document.createElement("img");
+        img.src = dataUrl;
+        preview.appendChild(img);
+      });
+
+      if (btn) btn.disabled = false;
+    }
+
+    async function produktHochladen(e) {
+      e.preventDefault();
+      if (!currentUser) {
+        zeigeAnsicht("auth");
+        return;
+      }
+
+      const btn = document.getElementById("submit-prod-btn");
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Objavljivanje...";
+      }
+
+      try {
+        const title = document.getElementById("prod-title").value.trim();
+        const category = document.getElementById("prod-cat").value;
+        const condition = document.getElementById("prod-cond").value;
+        const brand = document.getElementById("prod-brand").value.trim();
+        const city = document.getElementById("prod-city").value.trim() || currentUser.city || "";
+        const rawPrice = String(document.getElementById("prod-price").value).replace(",", ".");
+        const price = parseFloat(rawPrice) || 0;
+        const desc = document.getElementById("prod-desc").value.trim();
+        const files = Array.from(document.getElementById("prod-img").files);
+
+        const gewaehlteZahlungen = Array.from(document.querySelectorAll('input[name="paymethod"]:checked')).map(cb => cb.value);
+        if (gewaehlteZahlungen.length === 0) {
+          alert("Odaberi barem jedan način preuzimanja ili plaćanja.");
+          return;
+        }
+
+        let bilderArray = komprimiraneSlike.length > 0
+          ? komprimiraneSlike
+          : (files.length > 0 ? await Promise.all(files.map(file => komprimirajSliku(file))) : []);
+
+        if (bilderArray.length === 0) {
+          bilderArray = [svgBild(title || "BalkanOglasnik DE", "#064e3b", "#0f172a")];
+        }
+
+        const isAbo = (currentUser.abo || "").includes("Partner");
+        const payload = {
+          id: Date.now(),
+          title,
+          category,
+          condition,
+          brand,
+          price,
+          description: desc,
+          payments: gewaehlteZahlungen,
+          images: bilderArray,
+          seller_name: currentUser.name,
+          seller_city: city,
+          seller_email: currentUser.email,
+          seller_phone: currentUser.phone || "",
+          is_abo: isAbo
+        };
+
+        const { error } = await supabase.from(PRODUCTS_TABLE).insert([payload]);
+        if (error) {
+          console.warn("Napomena pri snimanju:", error.message);
+        }
+
+        products.unshift({
+          id: payload.id,
+          title: payload.title,
+          category: payload.category,
+          condition: payload.condition,
+          brand: payload.brand,
+          price: payload.price,
+          desc: payload.description,
+          payments: payload.payments,
+          images: payload.images,
+          sellerName: payload.seller_name,
+          sellerCity: payload.seller_city,
+          sellerEmail: payload.seller_email,
+          sellerPhone: payload.seller_phone,
+          isAbo: payload.is_abo
+        });
+
+        e.target.reset();
+        komprimiraneSlike = [];
+        document.getElementById("upload-preview").innerHTML = "";
+        zeigeNachricht("Oglas je objavljen!");
+        await zeigeAnsicht("shop");
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = "Objavi oglas";
+        }
+      }
+    }
+
+    async function produktLoeschen(id) {
+      if (!confirm("Obrisati ovaj oglas?")) return;
+      await supabase.from(PRODUCTS_TABLE).delete().eq("id", id);
+      products = products.filter(p => p.id !== id);
+      renderKonto();
+      zeigeNachricht("Oglas je obrisan.");
+    }
+
+    function wechselBild(prodId, richtung, direktIndex = null) {
+      const p = products.find(item => item.id === prodId);
+      if (!p || !p.images || !p.images.length) return;
+
+      let akt = bildIndexMap[prodId] || 0;
+      akt = direktIndex !== null ? direktIndex : (akt + richtung + p.images.length) % p.images.length;
+      bildIndexMap[prodId] = akt;
+
+      const imgEl = document.getElementById("card-img-" + prodId);
+      const countEl = document.getElementById("card-count-" + prodId);
+      if (imgEl) imgEl.src = p.images[akt];
+      if (countEl) countEl.textContent = (akt + 1) + " / " + p.images.length;
+
+      document.querySelectorAll(`.thumb-${prodId}`).forEach((t, idx) => {
+        t.classList.toggle("active", idx === akt);
+      });
+    }
+
+    function schnellStadt(stadt) {
+      document.getElementById("city-filter").value = stadt;
+      renderProdukte();
+    }
+
+    function baueProduktKarte(p, istKontoAnsicht = false) {
+      const bilder = p.images && p.images.length ? p.images : [];
+      const aktIndex = bildIndexMap[p.id] || 0;
+      const hatMehrere = bilder.length > 1;
+      const zahlungen = p.payments || ["Gotovina pri preuzimanju"];
+      const preisText = Number(p.price) === 0 ? "Dogovor / Poklanjam" : Number(p.price).toFixed(2) + " €";
+
+      return `
+        <div class="product-card ${p.isAbo ? "is-abo" : ""}">
+          <div class="slider-wrap">
+            <img id="card-img-${p.id}" src="${bilder[aktIndex] || ""}" alt="${p.title}" class="product-img">
+            ${hatMehrere ? `
+              <button class="slider-btn prev" onclick="wechselBild(${p.id}, -1)">❮</button>
+              <button class="slider-btn next" onclick="wechselBild(${p.id}, 1)">❯</button>
+              <span id="card-count-${p.id}" class="img-counter">${aktIndex + 1} / ${bilder.length}</span>
+            ` : ""}
+          </div>
+          ${hatMehrere ? `
+            <div class="thumb-strip">
+              ${bilder.map((url, idx) => `
+                <img src="${url}" class="thumb-img thumb-${p.id} ${idx === aktIndex ? 'active' : ''}" onclick="wechselBild(${p.id}, 0, ${idx})">
+              `).join("")}
+            </div>
+          ` : ""}
+          <div class="product-body">
+            <div class="badge-row">
+              ${p.isAbo ? `<span class="badge badge-abo">ABO Partner</span>` : ""}
+              <span class="badge">${p.category}</span>
+              <span class="badge badge-cond">${p.condition || "Polovno"}</span>
+              ${p.brand ? `<span class="badge badge-brand">${p.brand}</span>` : ""}
+            </div>
+            <h3 class="product-title">${p.title}</h3>
+            <p class="product-desc">${p.desc}</p>
+            <div class="payment-tags">
+              ${zahlungen.map(z => `<span class="pay-tag">${z}</span>`).join("")}
+            </div>
+            <div class="product-meta">
+              <span>Mjesto: <strong>${p.sellerCity || "-"}</strong></span>
+              <span>Objavio: <strong>${p.sellerName}</strong></span>
+            </div>
+            <div class="product-footer">
+              <span class="price">${preisText}</span>
+              ${istKontoAnsicht
+                ? `<button class="btn-danger" onclick="produktLoeschen(${p.id})">Obriši</button>`
+                : `<button class="btn-primary" onclick="oeffneKaufModal(${p.id})">Kontakt</button>`
+              }
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function resetFiltere() {
+      document.getElementById("search-input").value = "";
+      document.getElementById("category-filter").value = "Sve";
+      document.getElementById("condition-filter").value = "Sve";
+      document.getElementById("brand-filter").value = "";
+      document.getElementById("city-filter").value = "";
+      document.getElementById("min-price-filter").value = "";
+      document.getElementById("max-price-filter").value = "";
+      renderProdukte();
+    }
+
+    function renderProdukte() {
+      const suche = document.getElementById("search-input").value.trim().toLowerCase();
+      const kat = document.getElementById("category-filter").value;
+      const cond = document.getElementById("condition-filter").value;
+      const brand = document.getElementById("brand-filter").value.trim().toLowerCase();
+      const city = document.getElementById("city-filter").value.trim().toLowerCase();
+      const minVal = document.getElementById("min-price-filter").value;
+      const maxVal = document.getElementById("max-price-filter").value;
+
+      const minPrice = minVal !== "" ? parseFloat(minVal) : null;
+      const maxPrice = maxVal !== "" ? parseFloat(maxVal) : null;
+
+      const container = document.getElementById("product-list");
+
+      const gefiltert = products.filter(p => {
+        const matchText = !suche || p.title.toLowerCase().includes(suche) || p.desc.toLowerCase().includes(suche);
+        const matchKat = kat === "Sve" || p.category === kat;
+        const matchCond = cond === "Sve" || (p.condition || "Polovno") === cond;
+        const matchBrand = !brand || (p.brand && p.brand.toLowerCase().includes(brand)) || p.title.toLowerCase().includes(brand);
+        const matchCity = !city || (p.sellerCity && p.sellerCity.toLowerCase().includes(city));
+        const matchMin = minPrice === null || p.price >= minPrice;
+        const matchMax = maxPrice === null || p.price <= maxPrice;
+
+        return matchText && matchKat && matchCond && matchBrand && matchCity && matchMin && matchMax;
+      });
+
+      const countEl = document.getElementById("results-count");
+      if (countEl) countEl.textContent = `Prikazano: ${gefiltert.length}`;
+
+      if (gefiltert.length === 0) {
+        container.className = "";
+        container.innerHTML = `
+          <div class="empty-state">
+            <h3>Nema pronađenih oglasa</h3>
+            <p>Za odabrane filtere trenutno nema oglasa. Objavi svoj oglas prvi!</p>
+            <button class="btn-accent" onclick="zeigeAnsicht('sell')">+ Objavi oglas</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.className = "product-grid";
+      container.innerHTML = gefiltert.map(p => baueProduktKarte(p, false)).join("");
+    }
+
+    function renderKonto() {
+      document.getElementById("acc-name").textContent = currentUser.name;
+      document.getElementById("acc-city").textContent = currentUser.city || "-";
+      document.getElementById("acc-abo").textContent = currentUser.abo || "Osnovni";
+      document.getElementById("acc-email").textContent = currentUser.email;
+      document.getElementById("acc-phone").textContent = currentUser.phone || "Nije navedeno";
+
+      const meine = products.filter(p => p.sellerEmail === currentUser.email);
+      const container = document.getElementById("my-product-list");
+
+      if (meine.length === 0) {
+        container.className = "";
+        container.innerHTML = `
+          <div class="empty-state">
+            <h3>Još nemaš svojih oglasa</h3>
+            <p>Objavi svoj prvi oglas za Njemačku.</p>
+            <button class="btn-accent" onclick="zeigeAnsicht('sell')">+ Objavi oglas</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.className = "product-grid";
+      container.innerHTML = meine.map(p => baueProduktKarte(p, true)).join("");
+    }
+
+    function oeffneKaufModal(id) {
+      const p = products.find(item => item.id === id);
+      if (!p) return;
+      aktivesModalProdukt = p;
+
+      const bilder = p.images && p.images.length ? p.images : [];
+      document.getElementById("modal-img").src = bilder[0] || "";
+      document.getElementById("modal-thumbs").innerHTML = bilder.map(url => `
+        <img src="${url}" class="thumb-img active" onclick="document.getElementById('modal-img').src=this.src">
+      `).join("");
+
+      document.getElementById("modal-badges").innerHTML = `
+        ${p.isAbo ? `<span class="badge badge-abo">ABO Partner</span>` : ""}
+        <span class="badge">${p.category}</span>
+        <span class="badge badge-cond">${p.condition || "Polovno"}</span>
+        ${p.brand ? `<span class="badge badge-brand">${p.brand}</span>` : ""}
+      `;
+
+      document.getElementById("modal-title").textContent = p.title;
+      document.getElementById("modal-price").textContent = Number(p.price) === 0 ? "Dogovor / Poklanjam" : Number(p.price).toFixed(2) + " €";
+      document.getElementById("modal-desc").textContent = p.desc;
+      document.getElementById("modal-seller").textContent = p.sellerName;
+      document.getElementById("modal-city").textContent = p.sellerCity || "-";
+      document.getElementById("modal-phone").textContent = p.sellerPhone ? p.sellerPhone : "Nije navedeno (kontakt putem e-maila)";
+      document.getElementById("modal-email").textContent = p.sellerEmail;
+
+      const zahlungen = p.payments || ["Gotovina pri preuzimanju"];
+      document.getElementById("modal-payments").innerHTML = zahlungen.map(z => `<span class="pay-tag">${z}</span>`).join("");
+
+      document.getElementById("buyer-msg").value = `Pozdrav ${p.sellerName}, zanima me oglas "${p.title}" na BalkanOglasnik DE.`;
+      aktualisiereModalLinks();
+
+      document.getElementById("buy-modal").classList.remove("hidden");
+    }
+
+    function aktualisiereModalLinks() {
+      if (!aktivesModalProdukt) return;
+      const p = aktivesModalProdukt;
+      const nachricht = document.getElementById("buyer-msg").value.trim();
+      const kodiert = encodeURIComponent(nachricht);
+      const saubereNummer = (p.sellerPhone || "").replace(/[^0-9]/g, "");
+      const hatTelefon = saubereNummer.length > 0;
+
+      document.getElementById("modal-wa-btn").classList.toggle("hidden", !hatTelefon);
+      document.getElementById("modal-viber-btn").classList.toggle("hidden", !hatTelefon);
+      document.getElementById("modal-call-btn").classList.toggle("hidden", !hatTelefon);
+
+      if (hatTelefon) {
+        document.getElementById("modal-wa-btn").href = `https://wa.me/${saubereNummer}?text=${kodiert}`;
+        document.getElementById("modal-viber-btn").href = `viber://forward?text=${kodiert}`;
+        document.getElementById("modal-call-btn").href = `tel:${p.sellerPhone}`;
+      }
+      document.getElementById("modal-mail-btn").href = `mailto:${p.sellerEmail}?subject=Upit za oglas: ${encodeURIComponent(p.title)}&body=${kodiert}`;
+    }
+
+    function schliesseModal(e) {
+      if (e.target.id === "buy-modal") {
+        document.getElementById("buy-modal").classList.add("hidden");
+      }
+    }
+
+    window.zeigeAnsicht = zeigeAnsicht;
+    window.wechselAuthTab = wechselAuthTab;
+    window.waehleAbo = waehleAbo;
+    window.registrieren = registrieren;
+    window.einloggen = einloggen;
+    window.ausloggen = ausloggen;
+    window.vorschauBilder = vorschauBilder;
+    window.produktHochladen = produktHochladen;
+    window.produktLoeschen = produktLoeschen;
+    window.wechselBild = wechselBild;
+    window.schnellStadt = schnellStadt;
+    window.renderProdukte = renderProdukte;
+    window.resetFiltere = resetFiltere;
+    window.oeffneKaufModal = oeffneKaufModal;
+    window.aktualisiereModalLinks = aktualisiereModalLinks;
+    window.schliesseModal = schliesseModal;
+
+    aktualisiereNav();
+    renderProdukte();
+    await loadProductsFromDb();
+    renderProdukte();
+  </script>
+</body>
+</html>
