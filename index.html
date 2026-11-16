@@ -1265,46 +1265,47 @@
       }
 
       const pendingAbo = localStorage.getItem("bo_de_pendingAbo") || "Osnovni";
-      localStorage.removeItem("bo_de_pendingAbo");
 
-      const fallbackUser = { name, city, email, phone, abo: pendingAbo };
+      const { data: existing, error: checkErr } = await supabase
+        .from(USERS_TABLE)
+        .select("id")
+        .eq("email", email)
+        .maybeSingle();
 
-      try {
-        const { data: existing } = await supabase
-          .from(USERS_TABLE)
-          .select("id")
-          .eq("email", email)
-          .maybeSingle();
-
-        if (existing) {
-          alert("Ova e-mail adresa je već registrovana. Idi na Prijava.");
-          return;
-        }
-
-        const { data: inserted, error: insertErr } = await supabase
-          .from(USERS_TABLE)
-          .insert([{ name, city, email, phone, password: pass, agreed: true, abo: pendingAbo }])
-          .select()
-          .single();
-
-        if (!insertErr && inserted) {
-          currentUser = {
-            name: inserted.name,
-            city: inserted.city,
-            email: inserted.email,
-            phone: inserted.phone,
-            abo: inserted.abo || pendingAbo
-          };
-        } else {
-          currentUser = fallbackUser;
-        }
-      } catch {
-        currentUser = fallbackUser;
+      if (checkErr) {
+        console.error("Greška pri provjeri korisnika:", checkErr);
+        alert("Greška pri povezivanju sa bazom (provjera e-maila): " + checkErr.message);
+        return;
       }
 
+      if (existing) {
+        alert("Ova e-mail adresa je već registrovana. Idi na Prijava i unesi e-mail i lozinku.");
+        return;
+      }
+
+      const { data: inserted, error: insertErr } = await supabase
+        .from(USERS_TABLE)
+        .insert([{ name, city, email, phone, password: pass, agreed: true, abo: pendingAbo }])
+        .select()
+        .single();
+
+      if (insertErr) {
+        console.error("Greška pri registraciji:", insertErr);
+        alert("Registracija u bazi nije uspjela: " + insertErr.message);
+        return;
+      }
+
+      localStorage.removeItem("bo_de_pendingAbo");
+      currentUser = {
+        name: inserted.name,
+        city: inserted.city,
+        email: inserted.email,
+        phone: inserted.phone || "",
+        abo: inserted.abo || pendingAbo
+      };
       saveSessionUser();
       aktualisiereNav();
-      zeigeNachricht("Račun je uspješno kreiran!");
+      zeigeNachricht("Račun je uspješno sačuvan u bazi i aktivan na svim uređajima!");
       await zeigeAnsicht("account");
     }
 
